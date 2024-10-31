@@ -13,7 +13,7 @@ A simple Android application that allows users to open archived versions of web 
 1. Clone the repository:
 
    ```bash
-   https://github.com/jonnywesten/unpaywall-mobile.git
+   git clone https://github.com/jonnywesten/unpaywall-mobile.git
    ```
 
 2. Open the project in Android Studio.
