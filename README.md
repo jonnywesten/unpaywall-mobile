@@ -1,4 +1,4 @@
-# Archive App
+# UnPaywall Mobile
 
 A simple Android application that allows users to open archived versions of web pages using the archive.is service. The app integrates with the Android share menu.
 
