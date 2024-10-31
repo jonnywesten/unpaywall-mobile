@@ -8,6 +8,7 @@ import kotlinx.coroutines.launch
 import okhttp3.OkHttpClient
 import androidx.appcompat.app.AppCompatActivity
 import de.cs.unpaywall.R
+import okhttp3.Request
 import org.jsoup.Jsoup
 import java.net.URL
 

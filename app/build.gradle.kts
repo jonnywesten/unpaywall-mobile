@@ -49,10 +49,6 @@ android {
     }
 }
 
-configurations.all {
-    resolutionStrategy.cacheChangingModulesFor(0, TimeUnit.SECONDS)
-}
-
 dependencies {
     implementation(libs.androidx.appcompat.v170)
     implementation(libs.okhttp)
@@ -65,7 +61,6 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
-    implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.activity)
     testImplementation(libs.junit)
