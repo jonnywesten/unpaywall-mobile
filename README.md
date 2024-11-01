@@ -22,20 +22,18 @@ A simple Android application that allows users to open archived versions of web 
 
 4. Ensure you have internet access to use the archive service.
 
+## Download APK
+
+You can download the APK file directly from the following link:
+
+[Download Archive App APK](https://s3.code-smart.com/unpaywall/app-release.apk)
+
 ## Usage
 
 1. Open any browser or app that supports sharing.
 2. Long press on a link to bring up the context menu.
 3. Select "Open in Archive" from the share options.
 4. The app will open the archived version of the page in your default web browser.
-
-## Development
-
-### Project Structure
-
-- app/src/main/java/de/cs/unpaywall/ArchiveActivity.kt: Main activity handling shared intents and displaying archived pages.
-- app/src/main/res/layout/activity_archive.xml: Layout file for the ArchiveActivity.
-- app/src/main/AndroidManifest.xml: Manifest file declaring app components and permissions.
 
 ### Dependencies
 
