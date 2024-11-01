@@ -26,7 +26,7 @@ A simple Android application that allows users to open archived versions of web 
 
 You can download the APK file directly from the following link:
 
-[Download Archive App APK](https://s3.code-smart.com/unpaywall/app-release.apk)
+[Download UnPaywall APK](https://s3.code-smart.com/unpaywall/app-release.apk)
 
 ## Usage
 
