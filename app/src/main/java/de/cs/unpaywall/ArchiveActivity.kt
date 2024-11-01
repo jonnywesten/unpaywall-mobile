@@ -30,7 +30,6 @@ class ArchiveActivity : AppCompatActivity() {
     }
 
     private fun handleIntent(intent: Intent?) {
-        Log.d("ArchiveActivity", "Handling intent: ${intent?.action}")
         if (intent?.action == Intent.ACTION_SEND && intent.type == "text/plain") {
             handleSendText(intent)
         }
