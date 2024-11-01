@@ -1,13 +1,16 @@
+package de.cs.unpaywall;
+
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import okhttp3.OkHttpClient
 import androidx.appcompat.app.AppCompatActivity
-import de.cs.unpaywall.R
+import kotlinx.coroutines.DelicateCoroutinesApi
 import okhttp3.Request
 import org.jsoup.Jsoup
 import java.net.URL
@@ -18,12 +21,22 @@ class ArchiveActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_archive)
+        handleIntent(intent)
+    }
 
+    override fun onNewIntent(intent: Intent) {
+        super.onNewIntent(intent)
+        handleIntent(intent)
+    }
+
+    private fun handleIntent(intent: Intent?) {
+        Log.d("ArchiveActivity", "Handling intent: ${intent?.action}")
         if (intent?.action == Intent.ACTION_SEND && intent.type == "text/plain") {
             handleSendText(intent)
         }
     }
 
+    @OptIn(DelicateCoroutinesApi::class)
     private fun handleSendText(intent: Intent) {
         intent.getStringExtra(Intent.EXTRA_TEXT)?.let { sharedText ->
             GlobalScope.launch(Dispatchers.IO) {
@@ -31,7 +44,6 @@ class ArchiveActivity : AppCompatActivity() {
                     val url = URL(sharedText)
                     val strippedUrl = "${url.protocol}://${url.host}${url.path}"
                     val archiveApiUrl = "https://archive.is/${Uri.encode(strippedUrl)}"
-
                     val request = Request.Builder()
                         .url(archiveApiUrl)
                         .build()
@@ -44,7 +56,7 @@ class ArchiveActivity : AppCompatActivity() {
                                 if (linkUrls.isNotEmpty()) {
                                     openInBrowser(linkUrls[0])
                                 } else {
-                                    showError("Archived link not found in the response.")
+                                    showError("No archived link found.")
                                 }
                             }
                         } else {
@@ -75,8 +87,8 @@ class ArchiveActivity : AppCompatActivity() {
 
     private fun openInBrowser(url: String) {
         runOnUiThread {
-            val browsertent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
-            startActivity(browsertent)
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+            startActivity(intent)
             finish()
         }
     }
